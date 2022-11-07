@@ -23,6 +23,25 @@
   
   
   <entry>
+    <title>最小移动总距离</title>
+    <link href="/2022/11/07/%E6%9C%80%E5%B0%8F%E7%A7%BB%E5%8A%A8%E6%80%BB%E8%B7%9D%E7%A6%BB/"/>
+    <url>/2022/11/07/%E6%9C%80%E5%B0%8F%E7%A7%BB%E5%8A%A8%E6%80%BB%E8%B7%9D%E7%A6%BB/</url>
+    
+    <content type="html"><![CDATA[<p>题目</p><p><a href="https://leetcode.cn/problems/minimum-total-distance-traveled/description/">https://leetcode.cn/problems/minimum-total-distance-traveled/description/</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>动态规划 分治</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2022/10/06/hello-world/"/>
     <url>/2022/10/06/hello-world/</url>
