@@ -16,24 +16,24 @@
   <meta name="author" content="onelong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;minimum-total-distance-traveled&#x2F;description&#x2F; X 轴上有一些机器人和工厂。给你一个整数数组 robot ，其中 robot[i] 是第 i 个机器人的位置。再给你一个二维整数数组 factory ，其中 factory[j] &#x3D; [positionj, limitj] ，表示第 j">
+    <meta name="description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;largest-plus-sign&#x2F;description&#x2F; 在一个 n x n 的矩阵 grid 中，除了在数组 mines 中给出的元素为 0，其他每个元素都为 1。mines[i] &#x3D; [xi, yi]表示 grid[xi][yi] &#x3D;&#x3D; 0 返回 grid 中包含 1 的最大的 轴对齐 加号标志的阶数 。如果未找">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最小移动总距离">
-<meta property="og:url" content="https://example/2022/11/07/%E6%9C%80%E5%B0%8F%E7%A7%BB%E5%8A%A8%E6%80%BB%E8%B7%9D%E7%A6%BB/index.html">
+<meta property="og:title" content="最大加号标志">
+<meta property="og:url" content="https://example/2022/11/09/%E6%9C%80%E5%A4%A7%E5%8A%A0%E5%8F%B7%E6%A0%87%E5%BF%97/index.html">
 <meta property="og:site_name" content="onelong">
-<meta property="og:description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;minimum-total-distance-traveled&#x2F;description&#x2F; X 轴上有一些机器人和工厂。给你一个整数数组 robot ，其中 robot[i] 是第 i 个机器人的位置。再给你一个二维整数数组 factory ，其中 factory[j] &#x3D; [positionj, limitj] ，表示第 j">
+<meta property="og:description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;largest-plus-sign&#x2F;description&#x2F; 在一个 n x n 的矩阵 grid 中，除了在数组 mines 中给出的元素为 0，其他每个元素都为 1。mines[i] &#x3D; [xi, yi]表示 grid[xi][yi] &#x3D;&#x3D; 0 返回 grid 中包含 1 的最大的 轴对齐 加号标志的阶数 。如果未找">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://example/img/c001.jpg">
-<meta property="article:published_time" content="2022-11-07T14:25:38.000Z">
-<meta property="article:modified_time" content="2022-11-08T15:52:12.539Z">
+<meta property="og:image" content="https://example/img/c002.jpg">
+<meta property="article:published_time" content="2022-11-09T08:05:22.000Z">
+<meta property="article:modified_time" content="2022-11-09T08:12:29.618Z">
 <meta property="article:author" content="onelong">
-<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="前缀和">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://example/img/c001.jpg">
+<meta name="twitter:image" content="https://example/img/c002.jpg">
   
   
   
-  <title>最小移动总距离 - onelong</title>
+  <title>最大加号标志 - onelong</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,13 +192,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/c001.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/c002.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="最小移动总距离"></span>
+            <span id="subtitle" data-typed-text="最大加号标志"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-07 22:25" pubdate>
-          2022年11月7日 晚上
+        <time datetime="2022-11-09 16:05" pubdate>
+          2022年11月9日 下午
         </time>
       </span>
     
@@ -254,62 +254,34 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">最小移动总距离</h1>
+            <h1 style="display: none">最大加号标志</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="题目">题目</h2>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-total-distance-traveled/description/"
-class="uri">https://leetcode.cn/problems/minimum-total-distance-traveled/description/</a></p>
-<p>X 轴上有一些机器人和工厂。给你一个整数数组 <code>robot</code> ，其中
-<code>robot[i]</code> 是第 <code>i</code>
-个机器人的位置。再给你一个二维整数数组 <code>factory</code> ，其中
-<code>factory[j] = [positionj, limitj]</code> ，表示第 <code>j</code>
-个工厂的位置在 <code>positionj</code> ，且第 <code>j</code>
-个工厂最多可以修理 <code>limitj</code> 个机器人。</p>
-<p>每个机器人所在的位置 <strong>互不相同</strong> 。每个工厂所在的位置也
-<strong>互不相同</strong> 。注意一个机器人可能一开始跟一个工厂在
-<strong>相同的位置</strong> 。</p>
-<p>所有机器人一开始都是坏的，他们会沿着设定的方向一直移动。设定的方向要么是
-X 轴的正方向，要么是 X
-轴的负方向。当一个机器人经过一个没达到上限的工厂时，这个工厂会维修这个机器人，且机器人停止移动。</p>
-<p><strong>任何时刻</strong>，你都可以设置 <strong>部分</strong>
-机器人的移动方向。你的目标是最小化所有机器人总的移动距离。</p>
-<p>请你返回所有机器人移动的最小总距离。测试数据保证所有机器人都可以被维修。</p>
-<p><strong>注意：</strong></p>
-<ul>
-<li>所有机器人移动速度相同。</li>
-<li>如果两个机器人移动方向相同，它们永远不会碰撞。</li>
-<li>如果两个机器人迎面相遇，它们也不会碰撞，它们彼此之间会擦肩而过。</li>
-<li>如果一个机器人经过了一个已经达到上限的工厂，机器人会当作工厂不存在，继续移动。</li>
-<li>机器人从位置 <code>x</code> 到位置 <code>y</code> 的移动距离为
-<code>|y - x|</code> 。</li>
-</ul>
-<p><strong>提示：</strong></p>
-<ul>
-<li><code>1 &lt;= robot.length, factory.length &lt;= 100</code></li>
-<li><code>factory[j].length == 2</code></li>
-<li><code>-109 &lt;= robot[i], positionj &lt;= 109</code></li>
-<li><code>0 &lt;= limitj &lt;= robot.length</code></li>
-<li>测试数据保证所有机器人都可以被维修。</li>
-</ul>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-plus-sign/description/"
+class="uri">https://leetcode.cn/problems/largest-plus-sign/description/</a></p>
+<p>在一个 <code>n x n</code> 的矩阵 <code>grid</code> 中，除了在数组
+<code>mines</code> 中给出的元素为 <code>0</code>，其他每个元素都为
+<code>1</code>。<code>mines[i] = [xi, yi]</code>表示
+<code>grid[xi][yi] == 0</code></p>
+<p>返回 <code>grid</code> <em>中包含 <code>1</code> 的最大的
+<strong>轴对齐</strong> 加号标志的阶数</em> 。如果未找到加号标志，则返回
+<code>0</code> 。</p>
+<p>一个 <code>k</code> 阶由 <em><code>1</code></em> 组成的
+<strong>“轴对称”加号标志</strong> 具有中心网格
+<code>grid[r][c] == 1</code>
+，以及4个从中心向上、向下、向左、向右延伸，长度为 <code>k-1</code>，由
+<code>1</code> 组成的臂。注意，只有加号标志的所有网格要求为
+<code>1</code> ，别的网格可能为 <code>0</code> 也可能为 <code>1</code>
+。</p>
 <h2 id="示例">示例</h2>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入：robot = [<span class="hljs-number">0</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>], factory = <span class="hljs-string">[[2,2],[6,2]]</span><br>输出：<span class="hljs-number">4</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入：robot = [<span class="hljs-number">1</span>,<span class="hljs-number">-1</span>], factory = <span class="hljs-string">[[-2,1],[2,1]]</span><br>输出：<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入: n = <span class="hljs-number">5</span>, mines = <span class="hljs-string">[[4, 2]]</span><br>输出: <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入: n = <span class="hljs-number">1</span>, mines = <span class="hljs-string">[[0, 0]]</span><br>输出: <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 <h2 id="题解">题解</h2>
-<p>设最优方案中，机器人 <code>i</code> 被送去工厂 <code>Ti</code>
-，存在最优方案，使得<code>Ti</code>是不严格单调递增的。</p>
-<p>定义 <code>dp[i][j]</code>表示前 <code>i</code>个工厂修复前
-<code>j</code>
-个机器人的最小移动总距离。考虑去最后一个工厂的机器人有多少个，可以得到动态规划转移方程：</p>
-<p><span class="math display">\[
-d p[i][j]=\min _{k=0}^{\min \left(\text { limiti }_{i} j\right)}\left(d
-p[i-1][j-k]+\sum_{l=0}^{k-1} \mid \operatorname{robot}[j-l]-\text {
-position }_{i} \mid\right)
-\]</span></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">long</span> <span class="hljs-title function_">minimumTotalDistance</span><span class="hljs-params">(List&lt;Integer&gt; robot, <span class="hljs-type">int</span>[][] factory)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> robot.size();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> factory.length;<br>        Collections.sort(robot);<br>        Arrays.sort(factory);<br>        <span class="hljs-type">long</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">long</span>[m + <span class="hljs-number">1</span>][n + <span class="hljs-number">1</span>];<br>        <span class="hljs-comment">//工厂为0 不能匹配</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= m; i++)&#123;<br>            dp[i][<span class="hljs-number">0</span>] = <span class="hljs-number">0x3f3f3f3f3f3f3f3fL</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= m; i++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt;= n ; j++)&#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">pos</span> <span class="hljs-operator">=</span> factory[j-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>];<br>                <span class="hljs-type">int</span> <span class="hljs-variable">lim</span> <span class="hljs-operator">=</span> factory[j-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>];<br>                <span class="hljs-comment">//初始值 0个机器人到 j 工厂</span><br>                dp[i][j] = dp[i][j-<span class="hljs-number">1</span>];<br>                <span class="hljs-type">long</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>                <span class="hljs-comment">//累加距离减少一次遍历</span><br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> i; k &gt;= Math.max(<span class="hljs-number">1</span> , i - lim + <span class="hljs-number">1</span>); k--)&#123;<br>                    sum += Math.abs(pos-robot.get(k - <span class="hljs-number">1</span>));<br>                    dp[i][j] = Math.min(dp[i][j], dp[k - <span class="hljs-number">1</span>][j - <span class="hljs-number">1</span>] + sum);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[m][n];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>预处理四个方向最长长度</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">orderOfLargestPlusSign</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span>[][] mines)</span> &#123;<br>        <span class="hljs-type">int</span>[][] grid = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++) Arrays.fill(grid[i], <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span>[] mm : mines)&#123;<br>            grid[mm[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>][mm[<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-comment">//四个方向</span><br>        <span class="hljs-type">int</span>[][] a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-type">int</span>[][] b = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-type">int</span>[][] c = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-type">int</span>[][] d = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt;= n; j++)&#123;<br>                <span class="hljs-keyword">if</span>(grid[i][j] == <span class="hljs-number">1</span>)&#123;<br>                    a[i][j] = a[i - <span class="hljs-number">1</span>][j] + <span class="hljs-number">1</span>;<br>                    b[i][j] = b[i][j - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;<br>                &#125;<br>                <span class="hljs-keyword">if</span> (grid[n + <span class="hljs-number">1</span> - i][n + <span class="hljs-number">1</span> - j] == <span class="hljs-number">1</span>) &#123;<br>                    c[n + <span class="hljs-number">1</span> - i][n + <span class="hljs-number">1</span> - j] = c[n + <span class="hljs-number">2</span> - i][n + <span class="hljs-number">1</span> - j] + <span class="hljs-number">1</span>;<br>                    d[n + <span class="hljs-number">1</span> - i][n + <span class="hljs-number">1</span> - j] = d[n + <span class="hljs-number">1</span> - i][n + <span class="hljs-number">2</span> - j] + <span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt;= n; j++) &#123;<br>                ans = Math.max(ans, Math.min(Math.min(a[i][j], b[i][j]), Math.min(c[i][j], d[i][j])));<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -343,7 +315,7 @@ position }_{i} \mid\right)
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">#动态规划</a>
+        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
       
     </div>
   
@@ -357,15 +329,15 @@ position }_{i} \mid\right)
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/09/%E6%9C%80%E5%A4%A7%E5%8A%A0%E5%8F%B7%E6%A0%87%E5%BF%97/" title="最大加号标志">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">最大加号标志</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/11/07/%E6%9C%80%E5%B0%8F%E7%A7%BB%E5%8A%A8%E6%80%BB%E8%B7%9D%E7%A6%BB/" title="最小移动总距离">
+                        <span class="hidden-mobile">最小移动总距离</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -416,12 +388,6 @@ position }_{i} \mid\right)
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -615,49 +581,6 @@ position }_{i} \mid\right)
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
