@@ -16,24 +16,25 @@
   <meta name="author" content="onelong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;largest-plus-sign&#x2F;description&#x2F; 在一个 n x n 的矩阵 grid 中，除了在数组 mines 中给出的元素为 0，其他每个元素都为 1。mines[i] &#x3D; [xi, yi]表示 grid[xi][yi] &#x3D;&#x3D; 0 返回 grid 中包含 1 的最大的 轴对齐 加号标志的阶数 。如果未找">
+    <meta name="description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;shortest-path-to-get-all-keys&#x2F;description&#x2F; 给定一个二维网格 grid ，其中：  &#39;.&#39; 代表一个空房间 &#39;#&#39; 代表一堵 &#39;@&#39; 是起点 小写字母代表钥匙 大写字母代表锁  我们从起点开始出发，一次移动是指向四个基本方向之一行走一个单位空间。我们不能在网格外面行走，也无">
 <meta property="og:type" content="article">
-<meta property="og:title" content="最大加号标志">
-<meta property="og:url" content="https://example/2022/11/09/%E6%9C%80%E5%A4%A7%E5%8A%A0%E5%8F%B7%E6%A0%87%E5%BF%97/index.html">
+<meta property="og:title" content="获取所有钥匙的最短路径">
+<meta property="og:url" content="https://example/2022/11/10/%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E9%92%A5%E5%8C%99%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/index.html">
 <meta property="og:site_name" content="onelong">
-<meta property="og:description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;largest-plus-sign&#x2F;description&#x2F; 在一个 n x n 的矩阵 grid 中，除了在数组 mines 中给出的元素为 0，其他每个元素都为 1。mines[i] &#x3D; [xi, yi]表示 grid[xi][yi] &#x3D;&#x3D; 0 返回 grid 中包含 1 的最大的 轴对齐 加号标志的阶数 。如果未找">
+<meta property="og:description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;shortest-path-to-get-all-keys&#x2F;description&#x2F; 给定一个二维网格 grid ，其中：  &#39;.&#39; 代表一个空房间 &#39;#&#39; 代表一堵 &#39;@&#39; 是起点 小写字母代表钥匙 大写字母代表锁  我们从起点开始出发，一次移动是指向四个基本方向之一行走一个单位空间。我们不能在网格外面行走，也无">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://example/img/c002.jpg">
-<meta property="article:published_time" content="2022-11-09T08:05:22.000Z">
-<meta property="article:modified_time" content="2022-11-09T08:12:29.618Z">
+<meta property="og:image" content="https://example/img/c003.jpg">
+<meta property="article:published_time" content="2022-11-10T07:06:26.000Z">
+<meta property="article:modified_time" content="2022-11-10T07:13:35.859Z">
 <meta property="article:author" content="onelong">
-<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="BFS">
+<meta property="article:tag" content="状态压缩">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://example/img/c002.jpg">
+<meta name="twitter:image" content="https://example/img/c003.jpg">
   
   
   
-  <title>最大加号标志 - onelong</title>
+  <title>获取所有钥匙的最短路径 - onelong</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,13 +193,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/c002.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/c003.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="最大加号标志"></span>
+            <span id="subtitle" data-typed-text="获取所有钥匙的最短路径"></span>
           
         </div>
 
@@ -209,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-09 16:05" pubdate>
-          2022年11月9日 下午
+        <time datetime="2022-11-10 15:06" pubdate>
+          2022年11月10日 下午
         </time>
       </span>
     
@@ -254,34 +255,50 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">最大加号标志</h1>
+            <h1 style="display: none">获取所有钥匙的最短路径</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="题目">题目</h2>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-plus-sign/description/"
-class="uri">https://leetcode.cn/problems/largest-plus-sign/description/</a></p>
-<p>在一个 <code>n x n</code> 的矩阵 <code>grid</code> 中，除了在数组
-<code>mines</code> 中给出的元素为 <code>0</code>，其他每个元素都为
-<code>1</code>。<code>mines[i] = [xi, yi]</code>表示
-<code>grid[xi][yi] == 0</code></p>
-<p>返回 <code>grid</code> <em>中包含 <code>1</code> 的最大的
-<strong>轴对齐</strong> 加号标志的阶数</em> 。如果未找到加号标志，则返回
-<code>0</code> 。</p>
-<p>一个 <code>k</code> 阶由 <em><code>1</code></em> 组成的
-<strong>“轴对称”加号标志</strong> 具有中心网格
-<code>grid[r][c] == 1</code>
-，以及4个从中心向上、向下、向左、向右延伸，长度为 <code>k-1</code>，由
-<code>1</code> 组成的臂。注意，只有加号标志的所有网格要求为
-<code>1</code> ，别的网格可能为 <code>0</code> 也可能为 <code>1</code>
-。</p>
+<p><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/shortest-path-to-get-all-keys/description/"
+class="uri">https://leetcode.cn/problems/shortest-path-to-get-all-keys/description/</a></p>
+<p>给定一个二维网格 <code>grid</code> ，其中：</p>
+<ul>
+<li>'.' 代表一个空房间</li>
+<li>'#' 代表一堵</li>
+<li>'@' 是起点</li>
+<li>小写字母代表钥匙</li>
+<li>大写字母代表锁</li>
+</ul>
+<p>我们从起点开始出发，一次移动是指向四个基本方向之一行走一个单位空间。我们不能在网格外面行走，也无法穿过一堵墙。如果途经一个钥匙，我们就把它捡起来。除非我们手里有对应的钥匙，否则无法通过锁。</p>
+<p>假设 k 为 钥匙/锁 的个数，且满足
+<code>1 &lt;= k &lt;= 6</code>，字母表中的前 <code>k</code>
+个字母在网格中都有自己对应的一个小写和一个大写字母。换言之，每个锁有唯一对应的钥匙，每个钥匙也有唯一对应的锁。另外，代表钥匙和锁的字母互为大小写并按字母顺序排列。</p>
+<p>返回获取所有钥匙所需要的移动的最少次数。如果无法获取所有钥匙，返回
+<code>-1</code> 。</p>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>m == grid.length</code></li>
+<li><code>n == grid[i].length</code></li>
+<li><code>1 &lt;= m, n &lt;= 30</code></li>
+<li><code>grid[i][j]</code> 只含有 <code>'.'</code>, <code>'#'</code>,
+<code>'@'</code>, <code>'a'-``'f``'</code> 以及
+<code>'A'-'F'</code></li>
+<li>钥匙的数目范围是 <code>[1, 6]</code></li>
+<li>每个钥匙都对应一个 <strong>不同</strong> 的字母</li>
+<li>每个钥匙正好打开一个对应的锁</li>
+</ul>
 <h2 id="示例">示例</h2>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入: n = <span class="hljs-number">5</span>, mines = <span class="hljs-string">[[4, 2]]</span><br>输出: <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入: n = <span class="hljs-number">1</span>, mines = <span class="hljs-string">[[0, 0]]</span><br>输出: <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs maxima">输入：<span class="hljs-built_in">grid</span> = [<span class="hljs-string">&quot;@.a.#&quot;</span>,<span class="hljs-string">&quot;###.#&quot;</span>,<span class="hljs-string">&quot;b.A.B&quot;</span>]<br>输出：<span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs maxima">输入：<span class="hljs-built_in">grid</span> = [<span class="hljs-string">&quot;@..aA&quot;</span>,<span class="hljs-string">&quot;..B#.&quot;</span>,<span class="hljs-string">&quot;....b&quot;</span>]<br>输出：<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">输入: grid = [&quot;@Aa&quot;]</span><br><span class="hljs-section">输出: -1</span><br></code></pre></td></tr></table></figure>
 <h2 id="题解">题解</h2>
-<p>预处理四个方向最长长度</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">orderOfLargestPlusSign</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span>[][] mines)</span> &#123;<br>        <span class="hljs-type">int</span>[][] grid = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++) Arrays.fill(grid[i], <span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span>[] mm : mines)&#123;<br>            grid[mm[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>][mm[<span class="hljs-number">1</span>] + <span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-comment">//四个方向</span><br>        <span class="hljs-type">int</span>[][] a = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-type">int</span>[][] b = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-type">int</span>[][] c = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-type">int</span>[][] d = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">2</span>][n + <span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt;= n; j++)&#123;<br>                <span class="hljs-keyword">if</span>(grid[i][j] == <span class="hljs-number">1</span>)&#123;<br>                    a[i][j] = a[i - <span class="hljs-number">1</span>][j] + <span class="hljs-number">1</span>;<br>                    b[i][j] = b[i][j - <span class="hljs-number">1</span>] + <span class="hljs-number">1</span>;<br>                &#125;<br>                <span class="hljs-keyword">if</span> (grid[n + <span class="hljs-number">1</span> - i][n + <span class="hljs-number">1</span> - j] == <span class="hljs-number">1</span>) &#123;<br>                    c[n + <span class="hljs-number">1</span> - i][n + <span class="hljs-number">1</span> - j] = c[n + <span class="hljs-number">2</span> - i][n + <span class="hljs-number">1</span> - j] + <span class="hljs-number">1</span>;<br>                    d[n + <span class="hljs-number">1</span> - i][n + <span class="hljs-number">1</span> - j] = d[n + <span class="hljs-number">1</span> - i][n + <span class="hljs-number">2</span> - j] + <span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; j &lt;= n; j++) &#123;<br>                ans = Math.max(ans, Math.min(Math.min(a[i][j], b[i][j]), Math.min(c[i][j], d[i][j])));<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>重复搜索，选择BFS而非DFS</p>
+<p>使用一个 <code>int</code> 类型二进制数 <code>state</code>
+来代指当前收集到钥匙情况</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">N</span> <span class="hljs-operator">=</span> <span class="hljs-number">35</span>, K = <span class="hljs-number">10</span>, INF = <span class="hljs-number">0x3f3f3f3f</span>;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[][][] dist = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[N][N][<span class="hljs-number">1</span> &lt;&lt; K];<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[][] dirs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[][]&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;,&#123;-<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;,&#123;<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>&#125;&#125;;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">shortestPathAllKeys</span><span class="hljs-params">(String[] g)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> g.length, m = g[<span class="hljs-number">0</span>].length(), cnt = <span class="hljs-number">0</span>;<br>        Deque&lt;<span class="hljs-type">int</span>[]&gt; d = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; m; j++) &#123;<br>                Arrays.fill(dist[i][j], INF);<br>                <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> g[i].charAt(j);<br>                <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;@&#x27;</span>) &#123;<br>                    d.addLast(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;i, j, <span class="hljs-number">0</span>&#125;);<br>                    dist[i][j][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>                &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) cnt++;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (!d.isEmpty()) &#123;<br>            <span class="hljs-type">int</span>[] info = d.pollFirst();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> info[<span class="hljs-number">0</span>], y = info[<span class="hljs-number">1</span>], cur = info[<span class="hljs-number">2</span>], step = dist[x][y][cur];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] di : dirs) &#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">nx</span> <span class="hljs-operator">=</span> x + di[<span class="hljs-number">0</span>], ny = y + di[<span class="hljs-number">1</span>];<br>                <span class="hljs-keyword">if</span> (nx &lt; <span class="hljs-number">0</span> || nx &gt;= n || ny &lt; <span class="hljs-number">0</span> || ny &gt;= m) <span class="hljs-keyword">continue</span>;<br>                <span class="hljs-type">char</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> g[nx].charAt(ny);<br>                <span class="hljs-keyword">if</span> (c == <span class="hljs-string">&#x27;#&#x27;</span>) <span class="hljs-keyword">continue</span>;<br>                <span class="hljs-keyword">if</span> ((c &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>) &amp;&amp; (cur &gt;&gt; (c - <span class="hljs-string">&#x27;A&#x27;</span>) &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) <span class="hljs-keyword">continue</span>;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">ncur</span> <span class="hljs-operator">=</span> cur;<br>                <span class="hljs-keyword">if</span> (c &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; c &lt;= <span class="hljs-string">&#x27;z&#x27;</span>) ncur |= <span class="hljs-number">1</span> &lt;&lt; (c - <span class="hljs-string">&#x27;a&#x27;</span>);<br>                <span class="hljs-keyword">if</span> (ncur == (<span class="hljs-number">1</span> &lt;&lt; cnt) - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> step + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">if</span> (step + <span class="hljs-number">1</span> &gt;= dist[nx][ny][ncur]) <span class="hljs-keyword">continue</span>;<br>                dist[nx][ny][ncur] = step + <span class="hljs-number">1</span>;<br>                d.addLast(<span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;nx, ny, ncur&#125;);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -315,7 +332,9 @@ class="uri">https://leetcode.cn/problems/largest-plus-sign/description/</a></p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
+        <a href="/tags/BFS/">#BFS</a>
+      
+        <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/">#状态压缩</a>
       
     </div>
   
@@ -329,18 +348,12 @@ class="uri">https://leetcode.cn/problems/largest-plus-sign/description/</a></p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/10/%E8%8E%B7%E5%8F%96%E6%89%80%E6%9C%89%E9%92%A5%E5%8C%99%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" title="获取所有钥匙的最短路径">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">获取所有钥匙的最短路径</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/07/%E6%9C%80%E5%B0%8F%E7%A7%BB%E5%8A%A8%E6%80%BB%E8%B7%9D%E7%A6%BB/" title="最小移动总距离">
-                        <span class="hidden-mobile">最小移动总距离</span>
+                      <a href="/2022/11/09/%E6%9C%80%E5%A4%A7%E5%8A%A0%E5%8F%B7%E6%A0%87%E5%BF%97/" title="最大加号标志">
+                        <span class="hidden-mobile">最大加号标志</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
