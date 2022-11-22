@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>第N个神奇数字</title>
+    <link href="/2022/11/22/%E7%AC%ACN%E4%B8%AA%E7%A5%9E%E5%A5%87%E6%95%B0%E5%AD%97/"/>
+    <url>/2022/11/22/%E7%AC%ACN%E4%B8%AA%E7%A5%9E%E5%A5%87%E6%95%B0%E5%AD%97/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目">题目</h2><p><a href="https://leetcode.cn/problems/nth-magical-number/"class="uri">https://leetcode.cn/problems/nth-magical-number/</a></p><p>一个正整数如果能被 a 或 b 整除，那么它是神奇的。</p><p>给定三个整数 n , a , b ，返回第 n个神奇的数字。因为答案可能很大，所以返回答案 对 109 + 7 取模后的值。</p><p><strong>提示：</strong></p><ul><li><code>1 &lt;= n &lt;= 109</code></li><li><code>2 &lt;= a, b &lt;= 4 * 104</code></li></ul><h2 id="示例">示例</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">输入：n = <span class="hljs-number">1</span>, <span class="hljs-selector-tag">a</span> = <span class="hljs-number">2</span>, <span class="hljs-selector-tag">b</span> = <span class="hljs-number">3</span><br>输出：<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">输入：n = <span class="hljs-number">4</span>, <span class="hljs-selector-tag">a</span> = <span class="hljs-number">2</span>, <span class="hljs-selector-tag">b</span> = <span class="hljs-number">3</span><br>输出：<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure><h2 id="题解">题解</h2><p>二分答案逆推</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">nthMagicalNumber</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>            <span class="hljs-type">long</span> <span class="hljs-variable">MOD</span> <span class="hljs-operator">=</span> (<span class="hljs-type">long</span>)<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>;<br>            <span class="hljs-type">long</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> Math.min(a,b);<br>            <span class="hljs-type">long</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> l * n;<br>            <span class="hljs-type">long</span> <span class="hljs-variable">mc</span> <span class="hljs-operator">=</span> a * b / gcd(a,b);<br>            <span class="hljs-keyword">while</span>(l &lt; r)&#123;<br>                <span class="hljs-type">long</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (l + r) / <span class="hljs-number">2</span>;<br>                <span class="hljs-type">long</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> mid / a + mid / b;<br>                t -= mid / mc;<br>                <span class="hljs-keyword">if</span>(t &lt; n) l = mid + <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">else</span> r = mid;<br>            &#125;<br>            <span class="hljs-keyword">return</span> (<span class="hljs-type">int</span>)(l % MOD);<br>    &#125;<br>    <span class="hljs-type">int</span>  <span class="hljs-title function_">gcd</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span>&#123;<br>        <span class="hljs-keyword">if</span>(b == <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">return</span> a;<br>        &#125;<br>        <span class="hljs-keyword">return</span> gcd(b,a % b);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>code</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>二分</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>最大公约数</title>
     <link href="/2022/11/13/%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/"/>
     <url>/2022/11/13/%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0/</url>
