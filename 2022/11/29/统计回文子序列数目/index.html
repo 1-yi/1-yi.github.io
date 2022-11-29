@@ -16,25 +16,25 @@
   <meta name="author" content="onelong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;number-of-subarrays-with-bounded-maximum&#x2F; 给你一个整数数组 nums 和两个整数：left 及 right 。找出 nums 中连续、非空且其中最大元素在范围 [left, right] 内的子数组，并返回满足条件的子数组的个数。 生成的测试用例保证结果符合 32-bit 整数范围。">
+    <meta name="description" content="题目 给你数字字符串 s ，请你返回 s 中长度为 5 的 回文子序列 数目。由于答案可能很大，请你将答案对 109 + 7 取余 后返回。 提示：  如果一个字符串从前往后和从后往前读相同，那么它是 回文字符串 。 子序列是一个字符串中删除若干个字符后，不改变字符顺序，剩余字符构成的字符串。  提示：  1 &lt;&#x3D; s.length &lt;&#x3D; 104 s 只包含">
 <meta property="og:type" content="article">
-<meta property="og:title" content="区间子数组个数">
-<meta property="og:url" content="https://example/2022/11/24/%E5%8C%BA%E9%97%B4%E5%AD%90%E6%95%B0%E7%BB%84%E4%B8%AA%E6%95%B0/index.html">
+<meta property="og:title" content="统计回文子序列数目">
+<meta property="og:url" content="https://example/2022/11/29/%E7%BB%9F%E8%AE%A1%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97%E6%95%B0%E7%9B%AE/index.html">
 <meta property="og:site_name" content="onelong">
-<meta property="og:description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;number-of-subarrays-with-bounded-maximum&#x2F; 给你一个整数数组 nums 和两个整数：left 及 right 。找出 nums 中连续、非空且其中最大元素在范围 [left, right] 内的子数组，并返回满足条件的子数组的个数。 生成的测试用例保证结果符合 32-bit 整数范围。">
+<meta property="og:description" content="题目 给你数字字符串 s ，请你返回 s 中长度为 5 的 回文子序列 数目。由于答案可能很大，请你将答案对 109 + 7 取余 后返回。 提示：  如果一个字符串从前往后和从后往前读相同，那么它是 回文字符串 。 子序列是一个字符串中删除若干个字符后，不改变字符顺序，剩余字符构成的字符串。  提示：  1 &lt;&#x3D; s.length &lt;&#x3D; 104 s 只包含">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://example/img/c006.jpg">
-<meta property="article:published_time" content="2022-11-24T13:56:46.000Z">
-<meta property="article:modified_time" content="2022-11-27T02:28:11.176Z">
+<meta property="og:image" content="https://example/img/c008.jpg">
+<meta property="article:published_time" content="2022-11-29T08:49:30.000Z">
+<meta property="article:modified_time" content="2022-11-29T14:17:59.848Z">
 <meta property="article:author" content="onelong">
-<meta property="article:tag" content="子数组">
-<meta property="article:tag" content="单调栈">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="子序列">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://example/img/c006.jpg">
+<meta name="twitter:image" content="https://example/img/c008.jpg">
   
   
   
-  <title>区间子数组个数 - onelong</title>
+  <title>统计回文子序列数目 - onelong</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,13 +193,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/c006.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/c008.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="区间子数组个数"></span>
+            <span id="subtitle" data-typed-text="统计回文子序列数目"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-24 21:56" pubdate>
-          2022年11月24日 晚上
+        <time datetime="2022-11-29 16:49" pubdate>
+          2022年11月29日 下午
         </time>
       </span>
     
@@ -255,43 +255,47 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">区间子数组个数</h1>
+            <h1 style="display: none">统计回文子序列数目</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="题目">题目</h2>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-subarrays-with-bounded-maximum/"
-class="uri">https://leetcode.cn/problems/number-of-subarrays-with-bounded-maximum/</a></p>
-<p>给你一个整数数组 nums 和两个整数：left 及 right 。找出 nums
-中连续、非空且其中最大元素在范围 [left, right]
-内的子数组，并返回满足条件的子数组的个数。</p>
-<p>生成的测试用例保证结果符合 32-bit 整数范围。</p>
+<p>给你数字字符串 <code>s</code> ，请你返回 <code>s</code> 中长度为
+<code>5</code> 的 <strong>回文子序列</strong>
+数目。由于答案可能很大，请你将答案对 <code>109 + 7</code>
+<strong>取余</strong> 后返回。</p>
 <p><strong>提示：</strong></p>
 <ul>
-<li><code>1 &lt;= nums.length &lt;= 105</code></li>
-<li><code>0 &lt;= nums[i] &lt;= 109</code></li>
-<li><code>0 &lt;= left &lt;= right &lt;= 109</code></li>
+<li>如果一个字符串从前往后和从后往前读相同，那么它是
+<strong>回文字符串</strong> 。</li>
+<li>子序列是一个字符串中删除若干个字符后，不改变字符顺序，剩余字符构成的字符串。</li>
+</ul>
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= s.length &lt;= 104</code></li>
+<li><code>s</code> 只包含数字字符。</li>
 </ul>
 <h2 id="示例">示例</h2>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">输入：nums = <span class="hljs-selector-attr">[2,1,4,3]</span>, <span class="hljs-attribute">left</span> = <span class="hljs-number">2</span>, right = <span class="hljs-number">3</span><br>输出：<span class="hljs-number">3</span><br>解释：满足条件的三个子数组：<span class="hljs-selector-attr">[2]</span>, <span class="hljs-selector-attr">[2, 1]</span>, <span class="hljs-selector-attr">[3]</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs coq">输入：nums = [<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>], <span class="hljs-built_in">left</span> = <span class="hljs-number">2</span>, <span class="hljs-built_in">right</span> = <span class="hljs-number">8</span><br>输出：<span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">输入：s <span class="hljs-operator">=</span> <span class="hljs-string">&quot;103301&quot;</span><br>输出：<span class="hljs-number">2</span><br>解释：<br>总共有 <span class="hljs-number">6</span> 长度为 <span class="hljs-number">5</span> 的子序列：<span class="hljs-string">&quot;10330&quot;</span> ，<span class="hljs-string">&quot;10331&quot;</span> ，<span class="hljs-string">&quot;10301&quot;</span> ，<span class="hljs-string">&quot;10301&quot;</span> ，<span class="hljs-string">&quot;13301&quot;</span> ，<span class="hljs-string">&quot;03301&quot;</span> 。<br>它们中有两个（都是 <span class="hljs-string">&quot;10301&quot;</span>）是回文的。<br></code></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">输入：s <span class="hljs-operator">=</span> <span class="hljs-string">&quot;0000000&quot;</span><br>输出：<span class="hljs-number">21</span><br>解释：所有 <span class="hljs-number">21</span> 个长度为 <span class="hljs-number">5</span> 的子序列都是 <span class="hljs-string">&quot;00000&quot;</span> ，都是回文的。<br></code></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">输入：s <span class="hljs-operator">=</span> <span class="hljs-string">&quot;9999900000&quot;</span><br>输出：<span class="hljs-number">2</span><br>解释：仅有的两个回文子序列是 <span class="hljs-string">&quot;99999&quot;</span> 和 <span class="hljs-string">&quot;00000&quot;</span> 。<br></code></pre></td></tr></table></figure>
 <h2 id="题解">题解</h2>
-<p>统计所有最大值范围在 [a, b][a,b]
-之间的子数组个数，可等价为统计每一个范围落在 [a, b][a,b] 之间的 nums[i]
-作为最大值时子数组的个数。</p>
-<p>由此可以进一步将问题转换为：求解每个 nums[i]
-作为子数组最大值时，最远的合法左右端点的位置。这可以使用「单调栈」来进行求解。</p>
-<p>即 (r - i) * (i - l)</p>
-<p>统计所有 nums[i] 对答案的贡献即是最终答案，但我们忽略了「当 nums
-存在重复元素，且该元素作为子数组最大值时，最远左右端点的边界越过重复元素时，导致重复统计子数组」的问题。为了消除这种重复统计，我们可以将「最远左右边界」的一端，从「严格小于」调整为「小于等于」，从而实现半开半闭的效果。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">numSubarrayBoundedMax</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length, ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span>[] l = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">10</span>], r = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">10</span>];<br>        Arrays.fill(l, -<span class="hljs-number">1</span>); Arrays.fill(r, n);<br>        Deque&lt;Integer&gt; d = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">while</span> (!d.isEmpty() &amp;&amp; nums[d.peekLast()] &lt; nums[i]) r[d.pollLast()] = i;<br>            d.addLast(i);<br>        &#125;<br>        d.clear();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            <span class="hljs-keyword">while</span> (!d.isEmpty() &amp;&amp; nums[d.peekLast()] &lt;= nums[i]) l[d.pollLast()] = i;<br>            d.addLast(i);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">if</span> (nums[i] &lt; a || nums[i] &gt; b) <span class="hljs-keyword">continue</span>;<br>            ans += (i - l[i]) * (r[i] - i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="题解-模拟">题解 模拟</h2>
-<p>从小到大枚举数组右端点，同时维护上一个值 &gt; right 的元素下标 i0
-和上一个值在 [left,right] 内的元素下标 i1，则该右端点对应的左端点个数为
-i1 - i0，累加个数， 得到答案</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">numSubarrayBoundedMax</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length, ans = <span class="hljs-number">0</span>, i0 = -<span class="hljs-number">1</span>, i1 = -<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (nums[i] &gt; right) i0 = i;<br>            <span class="hljs-keyword">if</span> (nums[i] &gt;= left) i1 = i;<br>            ans += i1 - i0;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>用双前缀和计算 a(0..9) 与 a(0..9)b(0..9)
+的前缀和，再反向遍历同时实现反方向同类型前缀和与前缀和分段的目的</strong></p>
+<p>首先倒着遍历 s ，统计每个字符的出现次数 suf[a] 和两个字符的组合个数
+suf2[a][b]</p>
+<p>例如遍历到 a = s[i] 时，就更新 suf2[a][b][0..9] += suf[0..9] ，然后
+suf[a] 加一。</p>
+<p>然后正着遍历 s，统计每个字符的出现次数 pre[a]
+和两个字符的组合个数pre2[a][b]，更新方法同上。</p>
+<p>枚举每个 s[i]，当作回文子序列的回文中心，此时的子序列个数就是
+s[0..i-1] 中的 pre2[a][b] 与 s[i+1..n−1] 中的
+suf2[a][b]的组合，枚举所有的 a 和 b，个数相乘再相加，即为以 s[i]
+为回文子序列的回文中心时的答案。</p>
+<p>代码实现时，可以一遍遍历一遍计算 pre2[a][b]，同时撤销
+suf2[a][b]的统计结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">MOD</span> <span class="hljs-operator">=</span> (<span class="hljs-type">long</span>) <span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">countPalindromes</span><span class="hljs-params">(String S)</span> &#123;<br>        <span class="hljs-type">var</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> S.toCharArray();<br>        <span class="hljs-type">int</span>[] pre = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>], suf = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>];<br>        <span class="hljs-type">int</span>[][] pre2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>], suf2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> s.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) &#123;<br>            <span class="hljs-type">var</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> s[i] - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; ++j)<br>                suf2[d][j] += suf[j];<br>            ++suf[d];<br>        &#125;<br><br>        <span class="hljs-type">var</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0L</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> d : s) &#123;<br>            d -= <span class="hljs-string">&#x27;0&#x27;</span>;<br>            --suf[d];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; ++j)<br>                suf2[d][j] -= suf[j]; <span class="hljs-comment">// 撤销</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; ++j)<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">10</span>; ++k)<br>                    ans += (<span class="hljs-type">long</span>) pre2[j][k] * suf2[j][k]; <span class="hljs-comment">// 枚举所有字符组合</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; ++j)<br>                pre2[d][j] += pre[j];<br>            ++pre[d];<br>        &#125;<br>        <span class="hljs-keyword">return</span> (<span class="hljs-type">int</span>) (ans % MOD);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -325,9 +329,9 @@ i1 - i0，累加个数， 得到答案</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AD%90%E6%95%B0%E7%BB%84/">#子数组</a>
+        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
       
-        <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">#单调栈</a>
+        <a href="/tags/%E5%AD%90%E5%BA%8F%E5%88%97/">#子序列</a>
       
     </div>
   
@@ -341,18 +345,12 @@ i1 - i0，累加个数， 得到答案</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/29/%E4%BB%8E%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%A7%BB%E9%99%A4%E8%8A%82%E7%82%B9/" title="从链表中移除节点">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">从链表中移除节点</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/22/%E7%AC%ACN%E4%B8%AA%E7%A5%9E%E5%A5%87%E6%95%B0%E5%AD%97/" title="第N个神奇数字">
-                        <span class="hidden-mobile">第N个神奇数字</span>
+                      <a href="/2022/11/29/%E4%BB%8E%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%A7%BB%E9%99%A4%E8%8A%82%E7%82%B9/" title="从链表中移除节点">
+                        <span class="hidden-mobile">从链表中移除节点</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
