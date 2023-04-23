@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>回文链表</title>
+    <link href="/2023/04/23/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/"/>
+    <url>/2023/04/23/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目">题目</h2><p>https://leetcode.cn/problems/palindrome-linked-list/description/</p><p>给你一个单链表的头节点 <code>head</code>，请你判断该链表是否为回文链表。如果是，返回 <code>true</code>；否则，返回 <code>false</code> 。</p><p><strong>提示：</strong></p><ul><li>链表中节点数目在范围<code>[1, 105]</code> 内</li><li><code>0 &lt;= Node.val &lt;= 9</code></li></ul><h2 id="题解">题解</h2><p>递归解法 dfs中核心算法</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindrome</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tem</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">while</span>(tem != <span class="hljs-literal">null</span>)&#123;<br>            len++;<br>            tem = tem.next;<br>        &#125;<br>         dfs(head, len);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>    ListNode <span class="hljs-title function_">dfs</span><span class="hljs-params">(ListNode head, <span class="hljs-type">int</span> len)</span>&#123;<br>        <span class="hljs-keyword">if</span>(len == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> head;<br>        <span class="hljs-keyword">if</span>(le n== <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> head.next;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tail</span> <span class="hljs-operator">=</span> dfs(head.next, len - <span class="hljs-number">2</span>);<br>        <span class="hljs-keyword">if</span>(head.val != tail.val) ans = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> tail.next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>同样适用于头尾穿插重排数组</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>code</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>递归</tag>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>图中的最短环</title>
     <link href="/2023/04/02/%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E7%9F%AD%E7%8E%AF/"/>
     <url>/2023/04/02/%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E7%9F%AD%E7%8E%AF/</url>

@@ -16,24 +16,25 @@
   <meta name="author" content="onelong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 现有一个含 n 个顶点的 双向 图，每个顶点按从 0 到 n - 1 标记。图中的边由二维整数数组 edges 表示，其中 edges[i] &#x3D; [ui, vi] 表示顶点 ui 和 vi 之间存在一条边。每对顶点最多通过一条边连接，并且不存在与自身相连的顶点。 返回图中 最短 环的长度。如果不存在环，则返回 -1 。 环 是指以同一节点开始和结束，并且路径中的每条边仅使">
+    <meta name="description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;palindrome-linked-list&#x2F;description&#x2F; 给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。 提示：  链表中节点数目在范围[1, 105] 内 0 &lt;&#x3D; Node.val &lt;&#x3D; 9  题解 递归解法 d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图中的最短环">
-<meta property="og:url" content="https://example/2023/04/02/%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E7%9F%AD%E7%8E%AF/index.html">
+<meta property="og:title" content="回文链表">
+<meta property="og:url" content="https://example/2023/04/23/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="onelong">
-<meta property="og:description" content="题目 现有一个含 n 个顶点的 双向 图，每个顶点按从 0 到 n - 1 标记。图中的边由二维整数数组 edges 表示，其中 edges[i] &#x3D; [ui, vi] 表示顶点 ui 和 vi 之间存在一条边。每对顶点最多通过一条边连接，并且不存在与自身相连的顶点。 返回图中 最短 环的长度。如果不存在环，则返回 -1 。 环 是指以同一节点开始和结束，并且路径中的每条边仅使">
+<meta property="og:description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;palindrome-linked-list&#x2F;description&#x2F; 给你一个单链表的头节点 head ，请你判断该链表是否为回文链表。如果是，返回 true ；否则，返回 false 。 提示：  链表中节点数目在范围[1, 105] 内 0 &lt;&#x3D; Node.val &lt;&#x3D; 9  题解 递归解法 d">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://example/img/c010.jpg">
-<meta property="article:published_time" content="2023-04-02T10:52:49.000Z">
-<meta property="article:modified_time" content="2023-04-02T10:58:55.208Z">
+<meta property="og:image" content="https://example/img/c011.jpg">
+<meta property="article:published_time" content="2023-04-23T15:27:40.000Z">
+<meta property="article:modified_time" content="2023-04-23T15:36:28.101Z">
 <meta property="article:author" content="onelong">
-<meta property="article:tag" content="BFS">
+<meta property="article:tag" content="递归">
+<meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://example/img/c010.jpg">
+<meta name="twitter:image" content="https://example/img/c011.jpg">
   
   
   
-  <title>图中的最短环 - onelong</title>
+  <title>回文链表 - onelong</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -192,13 +193,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/c010.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/c011.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="图中的最短环"></span>
+            <span id="subtitle" data-typed-text="回文链表"></span>
           
         </div>
 
@@ -209,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-02 18:52" pubdate>
-          2023年4月2日 晚上
+        <time datetime="2023-04-23 23:27" pubdate>
+          2023年4月23日 晚上
         </time>
       </span>
     
@@ -254,36 +255,25 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">图中的最短环</h1>
+            <h1 style="display: none">回文链表</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="题目">题目</h2>
-<p>现有一个含 <code>n</code> 个顶点的 <strong>双向</strong>
-图，每个顶点按从 <code>0</code> 到 <code>n - 1</code>
-标记。图中的边由二维整数数组 <code>edges</code> 表示，其中
-<code>edges[i] = [ui, vi]</code> 表示顶点 <code>ui</code> 和
-<code>vi</code>
-之间存在一条边。每对顶点最多通过一条边连接，并且不存在与自身相连的顶点。</p>
-<p>返回图中 <strong>最短</strong> 环的长度。如果不存在环，则返回
-<code>-1</code> 。</p>
-<p><strong>环</strong>
-是指以同一节点开始和结束，并且路径中的每条边仅使用一次。</p>
-<h2 id="提示">提示</h2>
+<p>https://leetcode.cn/problems/palindrome-linked-list/description/</p>
+<p>给你一个单链表的头节点 <code>head</code>
+，请你判断该链表是否为回文链表。如果是，返回 <code>true</code>
+；否则，返回 <code>false</code> 。</p>
+<p><strong>提示：</strong></p>
 <ul>
-<li><code>2 &lt;= n &lt;= 1000</code></li>
-<li><code>1 &lt;= edges.length &lt;= 1000</code></li>
-<li><code>edges[i].length == 2</code></li>
-<li><code>0 &lt;= ui, vi &lt; n</code></li>
-<li><code>ui != vi</code></li>
-<li>不存在重复的边</li>
+<li>链表中节点数目在范围<code>[1, 105]</code> 内</li>
+<li><code>0 &lt;= Node.val &lt;= 9</code></li>
 </ul>
-<h2 id="示例">示例</h2>
-<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs inform7">输入：n = 7, edges = <span class="hljs-comment">[<span class="hljs-comment">[0,1]</span>,<span class="hljs-comment">[1,2]</span>,<span class="hljs-comment">[2,0]</span>,<span class="hljs-comment">[3,4]</span>,<span class="hljs-comment">[4,5]</span>,<span class="hljs-comment">[5,6]</span>,<span class="hljs-comment">[6,3]</span>]</span><br>输出：3<br>解释：长度最小的循环是：0 -&gt; 1 -&gt; 2 -&gt; 0 <br></code></pre></td></tr></table></figure>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua">输入：n = <span class="hljs-number">4</span>, edges = <span class="hljs-string">[[0,1],[0,2]]</span><br>输出：<span class="hljs-number">-1</span><br>解释：图中不存在循环<br></code></pre></td></tr></table></figure>
 <h2 id="题解">题解</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">findShortestCycle</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span>[][] edges)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> edges.length;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> Integer.MAX_VALUE;<br>        HashMap&lt;Integer,List&lt;Integer&gt;&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-comment">//************** */</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span>[] edge : edges) &#123;<br>            map.computeIfAbsent(edge[<span class="hljs-number">0</span>], t -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;()).add(edge[<span class="hljs-number">1</span>]);<br>            map.computeIfAbsent(edge[<span class="hljs-number">1</span>], t -&gt; <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;()).add(edge[<span class="hljs-number">0</span>]);<br>        &#125;<br>        <span class="hljs-comment">//遍历bfs</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++)&#123;<br>            Deque&lt;Integer&gt; dq = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();<br>            dq.addLast(i);<br>            <span class="hljs-type">int</span>[] dis = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br>            <span class="hljs-keyword">while</span> (!dq.isEmpty())&#123;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> dq.pollFirst();<br>                <span class="hljs-keyword">if</span>(!map.containsKey(num)) <span class="hljs-keyword">continue</span>;<br>                List&lt;Integer&gt; list = map.get(num);<br>                <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> numm : list)&#123;<br>                    <span class="hljs-keyword">if</span>(dis[numm] == <span class="hljs-number">0</span> &amp;&amp; numm != i) &#123;<br>                        dis[numm] = dis[num] + <span class="hljs-number">1</span>;<br>                        dq.addLast(numm);<br>                    &#125;<br>                    <span class="hljs-comment">//*** 排除上节点情况 */</span><br>                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dis[numm] != dis[num] - <span class="hljs-number">1</span>)&#123;<br>                        ans = Math.min(ans, dis[num] + dis[numm] + <span class="hljs-number">1</span>);<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans==Integer.MAX_VALUE ? -<span class="hljs-number">1</span> : ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>递归解法 dfs中核心算法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPalindrome</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tem</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">while</span>(tem != <span class="hljs-literal">null</span>)&#123;<br>            len++;<br>            tem = tem.next;<br>        &#125;<br>         dfs(head, len);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>    ListNode <span class="hljs-title function_">dfs</span><span class="hljs-params">(ListNode head, <span class="hljs-type">int</span> len)</span>&#123;<br>        <span class="hljs-keyword">if</span>(len == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> head;<br>        <span class="hljs-keyword">if</span>(le n== <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> head.next;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tail</span> <span class="hljs-operator">=</span> dfs(head.next, len - <span class="hljs-number">2</span>);<br>        <span class="hljs-keyword">if</span>(head.val != tail.val) ans = <span class="hljs-literal">false</span>;<br>        <span class="hljs-keyword">return</span> tail.next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>同样适用于头尾穿插重排数组</p>
 
                 
               </div>
@@ -317,7 +307,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/BFS/">#BFS</a>
+        <a href="/tags/%E9%80%92%E5%BD%92/">#递归</a>
+      
+        <a href="/tags/%E9%93%BE%E8%A1%A8/">#链表</a>
       
     </div>
   
@@ -331,18 +323,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/23/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" title="回文链表">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">回文链表</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/18/%E8%B4%A8%E5%9B%A0%E6%95%B0/" title="质因数">
-                        <span class="hidden-mobile">质因数</span>
+                      <a href="/2023/04/02/%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E7%9F%AD%E7%8E%AF/" title="图中的最短环">
+                        <span class="hidden-mobile">图中的最短环</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
