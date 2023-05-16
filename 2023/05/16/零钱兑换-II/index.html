@@ -16,25 +16,24 @@
   <meta name="author" content="onelong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;number-of-subarrays-with-bounded-maximum&#x2F; 给你一个整数数组 nums 和两个整数：left 及 right 。找出 nums 中连续、非空且其中最大元素在范围 [left, right] 内的子数组，并返回满足条件的子数组的个数。 生成的测试用例保证结果符合 32-bit 整数范围。">
+    <meta name="description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;coin-change-ii&#x2F;description&#x2F; 给你一个整数数组 coins 表示不同面额的硬币，另给一个整数 amount 表示总金额。 请你计算并返回可以凑成总金额的硬币组合数。如果任何硬币组合都无法凑出总金额，返回 0 。 假设每一种面额的硬币有无限个。 题目数据保证结果符合 32 位带符号整数。 提示：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="区间子数组个数">
-<meta property="og:url" content="https://example/2022/11/24/%E5%8C%BA%E9%97%B4%E5%AD%90%E6%95%B0%E7%BB%84%E4%B8%AA%E6%95%B0/index.html">
+<meta property="og:title" content="零钱兑换 II">
+<meta property="og:url" content="https://example/2023/05/16/%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2-II/index.html">
 <meta property="og:site_name" content="onelong">
-<meta property="og:description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;number-of-subarrays-with-bounded-maximum&#x2F; 给你一个整数数组 nums 和两个整数：left 及 right 。找出 nums 中连续、非空且其中最大元素在范围 [left, right] 内的子数组，并返回满足条件的子数组的个数。 生成的测试用例保证结果符合 32-bit 整数范围。">
+<meta property="og:description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;coin-change-ii&#x2F;description&#x2F; 给你一个整数数组 coins 表示不同面额的硬币，另给一个整数 amount 表示总金额。 请你计算并返回可以凑成总金额的硬币组合数。如果任何硬币组合都无法凑出总金额，返回 0 。 假设每一种面额的硬币有无限个。 题目数据保证结果符合 32 位带符号整数。 提示：">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://example/img/c006.jpg">
-<meta property="article:published_time" content="2022-11-24T13:56:46.000Z">
-<meta property="article:modified_time" content="2022-11-27T02:28:11.000Z">
+<meta property="og:image" content="https://example/img/c012.jpg">
+<meta property="article:published_time" content="2023-05-15T19:01:50.000Z">
+<meta property="article:modified_time" content="2023-05-16T02:59:44.425Z">
 <meta property="article:author" content="onelong">
-<meta property="article:tag" content="子数组">
-<meta property="article:tag" content="单调栈">
+<meta property="article:tag" content="dp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://example/img/c006.jpg">
+<meta name="twitter:image" content="https://example/img/c012.jpg">
   
   
   
-  <title>区间子数组个数 - onelong</title>
+  <title>零钱兑换 II - onelong</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,13 +192,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/c006.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/c012.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="区间子数组个数"></span>
+            <span id="subtitle" data-typed-text="零钱兑换 II"></span>
           
         </div>
 
@@ -210,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-24 21:56" pubdate>
-          2022年11月24日 晚上
+        <time datetime="2023-05-16 03:01" pubdate>
+          2023年5月16日 凌晨
         </time>
       </span>
     
@@ -255,43 +254,32 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">区间子数组个数</h1>
+            <h1 style="display: none">零钱兑换 II</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="题目">题目</h2>
-<p><a
-target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-subarrays-with-bounded-maximum/"
-class="uri">https://leetcode.cn/problems/number-of-subarrays-with-bounded-maximum/</a></p>
-<p>给你一个整数数组 nums 和两个整数：left 及 right 。找出 nums
-中连续、非空且其中最大元素在范围 [left, right]
-内的子数组，并返回满足条件的子数组的个数。</p>
-<p>生成的测试用例保证结果符合 32-bit 整数范围。</p>
+                <h3 id="题目">题目</h3>
+<p>https://leetcode.cn/problems/coin-change-ii/description/</p>
+<p>给你一个整数数组 <code>coins</code> 表示不同面额的硬币，另给一个整数
+<code>amount</code> 表示总金额。</p>
+<p>请你计算并返回可以凑成总金额的硬币组合数。如果任何硬币组合都无法凑出总金额，返回
+<code>0</code> 。</p>
+<p>假设每一种面额的硬币有无限个。</p>
+<p>题目数据保证结果符合 32 位带符号整数。</p>
 <p><strong>提示：</strong></p>
 <ul>
-<li><code>1 &lt;= nums.length &lt;= 105</code></li>
-<li><code>0 &lt;= nums[i] &lt;= 109</code></li>
-<li><code>0 &lt;= left &lt;= right &lt;= 109</code></li>
+<li><code>1 &lt;= coins.length &lt;= 300</code></li>
+<li><code>1 &lt;= coins[i] &lt;= 5000</code></li>
+<li><code>coins</code> 中的所有值 <strong>互不相同</strong></li>
+<li><code>0 &lt;= amount &lt;= 5000</code></li>
 </ul>
-<h2 id="示例">示例</h2>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">输入：nums = <span class="hljs-selector-attr">[2,1,4,3]</span>, <span class="hljs-attribute">left</span> = <span class="hljs-number">2</span>, right = <span class="hljs-number">3</span><br>输出：<span class="hljs-number">3</span><br>解释：满足条件的三个子数组：<span class="hljs-selector-attr">[2]</span>, <span class="hljs-selector-attr">[2, 1]</span>, <span class="hljs-selector-attr">[3]</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs coq">输入：nums = [<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>], <span class="hljs-built_in">left</span> = <span class="hljs-number">2</span>, <span class="hljs-built_in">right</span> = <span class="hljs-number">8</span><br>输出：<span class="hljs-number">7</span><br></code></pre></td></tr></table></figure>
-<h2 id="题解">题解</h2>
-<p>统计所有最大值范围在 [a, b][a,b]
-之间的子数组个数，可等价为统计每一个范围落在 [a, b][a,b] 之间的 nums[i]
-作为最大值时子数组的个数。</p>
-<p>由此可以进一步将问题转换为：求解每个 nums[i]
-作为子数组最大值时，最远的合法左右端点的位置。这可以使用「单调栈」来进行求解。</p>
-<p>即 (r - i) * (i - l)</p>
-<p>统计所有 nums[i] 对答案的贡献即是最终答案，但我们忽略了「当 nums
-存在重复元素，且该元素作为子数组最大值时，最远左右端点的边界越过重复元素时，导致重复统计子数组」的问题。为了消除这种重复统计，我们可以将「最远左右边界」的一端，从「严格小于」调整为「小于等于」，从而实现半开半闭的效果。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">numSubarrayBoundedMax</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length, ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span>[] l = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">10</span>], r = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">10</span>];<br>        Arrays.fill(l, -<span class="hljs-number">1</span>); Arrays.fill(r, n);<br>        Deque&lt;Integer&gt; d = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayDeque</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">while</span> (!d.isEmpty() &amp;&amp; nums[d.peekLast()] &lt; nums[i]) r[d.pollLast()] = i;<br>            d.addLast(i);<br>        &#125;<br>        d.clear();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>            <span class="hljs-keyword">while</span> (!d.isEmpty() &amp;&amp; nums[d.peekLast()] &lt;= nums[i]) l[d.pollLast()] = i;<br>            d.addLast(i);<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-keyword">if</span> (nums[i] &lt; a || nums[i] &gt; b) <span class="hljs-keyword">continue</span>;<br>            ans += (i - l[i]) * (r[i] - i);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="题解-模拟">题解 模拟</h2>
-<p>从小到大枚举数组右端点，同时维护上一个值 &gt; right 的元素下标 i0
-和上一个值在 [left,right] 内的元素下标 i1，则该右端点对应的左端点个数为
-i1 - i0，累加个数， 得到答案</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">numSubarrayBoundedMax</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length, ans = <span class="hljs-number">0</span>, i0 = -<span class="hljs-number">1</span>, i1 = -<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; ++i) &#123;<br>            <span class="hljs-keyword">if</span> (nums[i] &gt; right) i0 = i;<br>            <span class="hljs-keyword">if</span> (nums[i] &gt;= left) i1 = i;<br>            ans += i1 - i0;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="示例">示例</h3>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs subunit">输入：amount = 5, coins = [1, 2, 5]<br>输出：4<br>解释：有四种方式可以凑成总金额：<br>5=5<br>5=2<span class="hljs-string">+2</span><span class="hljs-string">+1</span><br>5=2<span class="hljs-string">+1</span><span class="hljs-string">+1</span><span class="hljs-string">+1</span><br>5=1<span class="hljs-string">+1</span><span class="hljs-string">+1</span><span class="hljs-string">+1</span><span class="hljs-string">+1</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tap">输入：amount = 3, coins = [2]<br>输出：0<br>解释：只用面额<span class="hljs-number"> 2 </span>的硬币不能凑成总金额<span class="hljs-number"> 3 </span>。<br></code></pre></td></tr></table></figure>
+<figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs fix"><span class="hljs-attr">输入：amount </span>=<span class="hljs-string"> 10, coins = [10] </span><br><span class="hljs-string">输出：1</span><br></code></pre></td></tr></table></figure>
+<h3 id="题解">题解</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">change</span><span class="hljs-params">(<span class="hljs-type">int</span> amount, <span class="hljs-type">int</span>[] coins)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> coins.length;<br>        <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[amount+<span class="hljs-number">1</span>];<br>        dp[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; len; i++)&#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j= <span class="hljs-number">1</span>; j &lt;= amount; j++)&#123;<br>                <span class="hljs-keyword">if</span>(j &gt;= coins[i]) dp[j] += dp[j-coins[i]];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> dp[amount];<br>    &#125;<br>&#125;<br><span class="hljs-comment">//***硬币外循环  和内循环  避免排列重复</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -325,9 +313,7 @@ i1 - i0，累加个数， 得到答案</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AD%90%E6%95%B0%E7%BB%84/">#子数组</a>
-      
-        <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/">#单调栈</a>
+        <a href="/tags/dp/">#dp</a>
       
     </div>
   
@@ -341,18 +327,12 @@ i1 - i0，累加个数， 得到答案</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/29/%E4%BB%8E%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%A7%BB%E9%99%A4%E8%8A%82%E7%82%B9/" title="从链表中移除节点">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">从链表中移除节点</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/22/%E7%AC%ACN%E4%B8%AA%E7%A5%9E%E5%A5%87%E6%95%B0%E5%AD%97/" title="第N个神奇数字">
-                        <span class="hidden-mobile">第N个神奇数字</span>
+                      <a href="/2023/04/23/%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/" title="回文链表">
+                        <span class="hidden-mobile">回文链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
