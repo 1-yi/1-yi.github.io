@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>最佳买卖股票时机含冷冻期</title>
+    <link href="/2023/05/17/%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F/"/>
+    <url>/2023/05/17/%E6%9C%80%E4%BD%B3%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E6%97%B6%E6%9C%BA%E5%90%AB%E5%86%B7%E5%86%BB%E6%9C%9F/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题目">题目</h2><p>https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/</p><p>给定一个整数数组<code>prices</code>，其中第 <code>prices[i]</code>表示第 <code>*i*</code> 天的股票价格 。</p><p>设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p><ul><li>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</li></ul><p><strong>注意：</strong>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p><p><strong>提示：</strong></p><ul><li><code>1 &lt;= prices.length &lt;= 5000</code></li><li><code>0 &lt;= prices[i] &lt;= 1000</code></li></ul><h2 id="示例">示例</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">输入: prices = [1,2,3,0,2]</span><br><span class="hljs-section">输出: 3 </span><br><span class="hljs-section">解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]</span><br></code></pre></td></tr></table></figure><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-section">输入: prices = [1]</span><br><span class="hljs-section">输出: 0</span><br></code></pre></td></tr></table></figure><h2 id="题解">题解</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">maxProfit</span><span class="hljs-params">(<span class="hljs-type">int</span>[] prices)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> prices.length;<br>        <span class="hljs-keyword">if</span>(len &lt; <span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">3</span>];<br>        dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>; <span class="hljs-comment">//******冷冻期 转2 存在一天</span><br>        dp[<span class="hljs-number">1</span>] =- prices[<span class="hljs-number">0</span>];<span class="hljs-comment">//*****持有股票</span><br>        dp[<span class="hljs-number">2</span>] = <span class="hljs-number">0</span>;<span class="hljs-comment">//****不持有股票 转1 可长期存在状态</span><br>        <span class="hljs-type">int</span> tem;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; len; i++)&#123;<br>            tem = dp[<span class="hljs-number">1</span>];<br>            <span class="hljs-comment">//原先持有或买入</span><br>            dp[<span class="hljs-number">1</span>] = Math.max(dp[<span class="hljs-number">1</span>], dp[<span class="hljs-number">2</span>] - prices[i]);<br>            <span class="hljs-comment">//冷冻期解除或一直不持有</span><br>            dp[<span class="hljs-number">2</span>] = Math.max(dp[<span class="hljs-number">0</span>], dp[<span class="hljs-number">2</span>]);<br>            <span class="hljs-comment">//卖出股票</span><br>            dp[<span class="hljs-number">0</span>] = tem + prices[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> Math.max(dp[<span class="hljs-number">0</span>], dp[<span class="hljs-number">2</span>]);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//状态机dp</span><br></code></pre></td></tr></table></figure><p>类似题目</p><p>买卖股票的最佳时机 IV</p><p>https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>code</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>dp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>零钱兑换 II</title>
     <link href="/2023/05/16/%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2-II/"/>
     <url>/2023/05/16/%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2-II/</url>
