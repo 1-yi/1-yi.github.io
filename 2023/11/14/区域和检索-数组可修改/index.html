@@ -16,25 +16,24 @@
   <meta name="author" content="onelong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目 给你数字字符串 s ，请你返回 s 中长度为 5 的 回文子序列 数目。由于答案可能很大，请你将答案对 109 + 7 取余 后返回。 提示：  如果一个字符串从前往后和从后往前读相同，那么它是 回文字符串 。 子序列是一个字符串中删除若干个字符后，不改变字符顺序，剩余字符构成的字符串。  提示：  1 &lt;&#x3D; s.length &lt;&#x3D; 104 s 只包含">
+    <meta name="description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;range-sum-query-mutable&#x2F;?envType&#x3D;daily-question&amp;envId&#x3D;2023-11-13 给你一个数组 nums ，请你完成两类查询。  其中一类查询要求 更新 数组 nums 下标对应的值 另一类查询要求返回数组 nums 中索引 left 和索引 right 之间（ 包">
 <meta property="og:type" content="article">
-<meta property="og:title" content="统计回文子序列数目">
-<meta property="og:url" content="https://example/2022/11/29/%E7%BB%9F%E8%AE%A1%E5%9B%9E%E6%96%87%E5%AD%90%E5%BA%8F%E5%88%97%E6%95%B0%E7%9B%AE/index.html">
+<meta property="og:title" content="区域和检索 - 数组可修改">
+<meta property="og:url" content="https://example/2023/11/14/%E5%8C%BA%E5%9F%9F%E5%92%8C%E6%A3%80%E7%B4%A2-%E6%95%B0%E7%BB%84%E5%8F%AF%E4%BF%AE%E6%94%B9/index.html">
 <meta property="og:site_name" content="onelong">
-<meta property="og:description" content="题目 给你数字字符串 s ，请你返回 s 中长度为 5 的 回文子序列 数目。由于答案可能很大，请你将答案对 109 + 7 取余 后返回。 提示：  如果一个字符串从前往后和从后往前读相同，那么它是 回文字符串 。 子序列是一个字符串中删除若干个字符后，不改变字符顺序，剩余字符构成的字符串。  提示：  1 &lt;&#x3D; s.length &lt;&#x3D; 104 s 只包含">
+<meta property="og:description" content="题目 https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;range-sum-query-mutable&#x2F;?envType&#x3D;daily-question&amp;envId&#x3D;2023-11-13 给你一个数组 nums ，请你完成两类查询。  其中一类查询要求 更新 数组 nums 下标对应的值 另一类查询要求返回数组 nums 中索引 left 和索引 right 之间（ 包">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://example/img/c008.jpg">
-<meta property="article:published_time" content="2022-11-29T08:49:30.000Z">
-<meta property="article:modified_time" content="2022-11-29T14:17:59.000Z">
+<meta property="og:image" content="https://example/img/c016.jpg">
+<meta property="article:published_time" content="2023-11-14T11:57:06.000Z">
+<meta property="article:modified_time" content="2023-11-14T12:25:39.419Z">
 <meta property="article:author" content="onelong">
-<meta property="article:tag" content="子序列">
-<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="树状数组">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://example/img/c008.jpg">
+<meta name="twitter:image" content="https://example/img/c016.jpg">
   
   
   
-  <title>统计回文子序列数目 - onelong</title>
+  <title>区域和检索 - 数组可修改 - onelong</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,13 +192,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/c008.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/c016.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="统计回文子序列数目"></span>
+            <span id="subtitle" data-typed-text="区域和检索 - 数组可修改"></span>
           
         </div>
 
@@ -210,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-29 16:49" pubdate>
-          2022年11月29日 下午
+        <time datetime="2023-11-14 19:57" pubdate>
+          2023年11月14日 晚上
         </time>
       </span>
     
@@ -255,47 +254,52 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">统计回文子序列数目</h1>
+            <h1 style="display: none">区域和检索 - 数组可修改</h1>
             
             
               <div class="markdown-body">
                 
                 <h2 id="题目">题目</h2>
-<p>给你数字字符串 <code>s</code> ，请你返回 <code>s</code> 中长度为
-<code>5</code> 的 <strong>回文子序列</strong>
-数目。由于答案可能很大，请你将答案对 <code>109 + 7</code>
-<strong>取余</strong> 后返回。</p>
-<p><strong>提示：</strong></p>
+<p>https://leetcode.cn/problems/range-sum-query-mutable/?envType=daily-question&amp;envId=2023-11-13</p>
+<p>给你一个数组 <code>nums</code> ，请你完成两类查询。</p>
+<ol type="1">
+<li>其中一类查询要求 <strong>更新</strong> 数组 <code>nums</code>
+下标对应的值</li>
+<li>另一类查询要求返回数组 <code>nums</code> 中索引 <code>left</code>
+和索引 <code>right</code> 之间（ <strong>包含</strong> ）的nums元素的
+<strong>和</strong> ，其中 <code>left &lt;= right</code></li>
+</ol>
+<p>实现 <code>NumArray</code> 类：</p>
 <ul>
-<li>如果一个字符串从前往后和从后往前读相同，那么它是
-<strong>回文字符串</strong> 。</li>
-<li>子序列是一个字符串中删除若干个字符后，不改变字符顺序，剩余字符构成的字符串。</li>
-</ul>
-<p><strong>提示：</strong></p>
+<li><code>NumArray(int[] nums)</code> 用整数数组 <code>nums</code>
+初始化对象</li>
+<li><code>void update(int index, int val)</code> 将
+<code>nums[index]</code> 的值 <strong>更新</strong> 为
+<code>val</code></li>
+<li><code>int sumRange(int left, int right)</code> 返回数组
+<code>nums</code> 中索引 <code>left</code> 和索引 <code>right</code>
+之间（ <strong>包含</strong> ）的nums元素的 <strong>和</strong>
+（即，<code>nums[left] + nums[left + 1], ..., nums[right]</code>）</li>
+<li><strong>提示：</strong>
 <ul>
-<li><code>1 &lt;= s.length &lt;= 104</code></li>
-<li><code>s</code> 只包含数字字符。</li>
+<li><code>1 &lt;= nums.length &lt;= 3 * 104</code></li>
+<li><code>-100 &lt;= nums[i] &lt;= 100</code></li>
+<li><code>0 &lt;= index &lt; nums.length</code></li>
+<li><code>-100 &lt;= val &lt;= 100</code></li>
+<li><code>0 &lt;= left &lt;= right &lt; nums.length</code></li>
+<li>调用 <code>update</code> 和 <code>sumRange</code> 方法次数不大于
+<code>3 * 104</code></li>
+</ul></li>
 </ul>
 <h2 id="示例">示例</h2>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs abnf">输入：s <span class="hljs-operator">=</span> <span class="hljs-string">&quot;103301&quot;</span><br>输出：<span class="hljs-number">2</span><br>解释：<br>总共有 <span class="hljs-number">6</span> 长度为 <span class="hljs-number">5</span> 的子序列：<span class="hljs-string">&quot;10330&quot;</span> ，<span class="hljs-string">&quot;10331&quot;</span> ，<span class="hljs-string">&quot;10301&quot;</span> ，<span class="hljs-string">&quot;10301&quot;</span> ，<span class="hljs-string">&quot;13301&quot;</span> ，<span class="hljs-string">&quot;03301&quot;</span> 。<br>它们中有两个（都是 <span class="hljs-string">&quot;10301&quot;</span>）是回文的。<br></code></pre></td></tr></table></figure>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">输入：s <span class="hljs-operator">=</span> <span class="hljs-string">&quot;0000000&quot;</span><br>输出：<span class="hljs-number">21</span><br>解释：所有 <span class="hljs-number">21</span> 个长度为 <span class="hljs-number">5</span> 的子序列都是 <span class="hljs-string">&quot;00000&quot;</span> ，都是回文的。<br></code></pre></td></tr></table></figure>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs abnf">输入：s <span class="hljs-operator">=</span> <span class="hljs-string">&quot;9999900000&quot;</span><br>输出：<span class="hljs-number">2</span><br>解释：仅有的两个回文子序列是 <span class="hljs-string">&quot;99999&quot;</span> 和 <span class="hljs-string">&quot;00000&quot;</span> 。<br></code></pre></td></tr></table></figure>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs prolog">输入：<br>[<span class="hljs-string">&quot;NumArray&quot;</span>, <span class="hljs-string">&quot;sumRange&quot;</span>, <span class="hljs-string">&quot;update&quot;</span>, <span class="hljs-string">&quot;sumRange&quot;</span>]<br>[[[<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>]], [<span class="hljs-number">0</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">2</span>]]<br>输出：<br>[null, <span class="hljs-number">9</span>, null, <span class="hljs-number">8</span>]<br><br>解释：<br><span class="hljs-symbol">NumArray</span> numArray = new <span class="hljs-symbol">NumArray</span>([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>]);<br>numArray.sumRange(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>); // 返回 <span class="hljs-number">1</span> + <span class="hljs-number">3</span> + <span class="hljs-number">5</span> = <span class="hljs-number">9</span><br>numArray.update(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);   // nums = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>]<br>numArray.sumRange(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>); // 返回 <span class="hljs-number">1</span> + <span class="hljs-number">2</span> + <span class="hljs-number">5</span> = <span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
 <h2 id="题解">题解</h2>
-<p><strong>用双前缀和计算 a(0..9) 与 a(0..9)b(0..9)
-的前缀和，再反向遍历同时实现反方向同类型前缀和与前缀和分段的目的</strong></p>
-<p>首先倒着遍历 s ，统计每个字符的出现次数 suf[a] 和两个字符的组合个数
-suf2[a][b]</p>
-<p>例如遍历到 a = s[i] 时，就更新 suf2[a][b][0..9] += suf[0..9] ，然后
-suf[a] 加一。</p>
-<p>然后正着遍历 s，统计每个字符的出现次数 pre[a]
-和两个字符的组合个数pre2[a][b]，更新方法同上。</p>
-<p>枚举每个 s[i]，当作回文子序列的回文中心，此时的子序列个数就是
-s[0..i-1] 中的 pre2[a][b] 与 s[i+1..n−1] 中的
-suf2[a][b]的组合，枚举所有的 a 和 b，个数相乘再相加，即为以 s[i]
-为回文子序列的回文中心时的答案。</p>
-<p>代码实现时，可以一遍遍历一遍计算 pre2[a][b]，同时撤销
-suf2[a][b]的统计结果。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">MOD</span> <span class="hljs-operator">=</span> (<span class="hljs-type">long</span>) <span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">countPalindromes</span><span class="hljs-params">(String S)</span> &#123;<br>        <span class="hljs-type">var</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> S.toCharArray();<br>        <span class="hljs-type">int</span>[] pre = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>], suf = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>];<br>        <span class="hljs-type">int</span>[][] pre2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>], suf2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>][<span class="hljs-number">10</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> s.length - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) &#123;<br>            <span class="hljs-type">var</span> <span class="hljs-variable">d</span> <span class="hljs-operator">=</span> s[i] - <span class="hljs-string">&#x27;0&#x27;</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; ++j)<br>                suf2[d][j] += suf[j];<br>            ++suf[d];<br>        &#125;<br><br>        <span class="hljs-type">var</span> <span class="hljs-variable">ans</span> <span class="hljs-operator">=</span> <span class="hljs-number">0L</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> d : s) &#123;<br>            d -= <span class="hljs-string">&#x27;0&#x27;</span>;<br>            --suf[d];<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; ++j)<br>                suf2[d][j] -= suf[j]; <span class="hljs-comment">// 撤销</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; ++j)<br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; k &lt; <span class="hljs-number">10</span>; ++k)<br>                    ans += (<span class="hljs-type">long</span>) pre2[j][k] * suf2[j][k]; <span class="hljs-comment">// 枚举所有字符组合</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">var</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; ++j)<br>                pre2[d][j] += pre[j];<br>            ++pre[d];<br>        &#125;<br>        <span class="hljs-keyword">return</span> (<span class="hljs-type">int</span>) (ans % MOD);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>单纯使用数组查询时复杂度为 O(<em>n</em>)
+使用前缀和更新数据时复杂度同样为O(<em>n</em>)</p>
+<p>采用树状数组使总复杂度为O(nlogn)</p>
+<p>lowbit 为计算所能分解的最小2的幂次方
+即为二进制表达中最低位1所表达的数字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NumArray</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span>[] nums;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span>[] tree;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">NumArray</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> nums.length;<br>        <span class="hljs-built_in">this</span>.nums = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n]; <span class="hljs-comment">// 使 update 中算出的 delta = nums[i]</span><br>        tree = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n + <span class="hljs-number">1</span>];<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            update(i, nums[i]);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(<span class="hljs-type">int</span> index, <span class="hljs-type">int</span> val)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">delta</span> <span class="hljs-operator">=</span> val - nums[index];<br>        nums[index] = val;<br>        <span class="hljs-comment">//******************lowbit(i) = i &amp; -i */</span><br>        <span class="hljs-comment">//****** 累加lowbit计算所有包含index的节点</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> index + <span class="hljs-number">1</span>; i &lt; tree.length; i += i &amp; -i) &#123;<br>            tree[i] += delta;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">prefixSum</span><span class="hljs-params">(<span class="hljs-type">int</span> i)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">//****** 累减lowbit计算所有包含index的节点之和</span><br>        <span class="hljs-keyword">for</span> (; i &gt; <span class="hljs-number">0</span>; i &amp;= i - <span class="hljs-number">1</span>) &#123; <span class="hljs-comment">// i -= i &amp; -i 的另一种写法</span><br>            s += tree[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> s;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">sumRange</span><span class="hljs-params">(<span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;<br>        <span class="hljs-keyword">return</span> prefixSum(right + <span class="hljs-number">1</span>) - prefixSum(left);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//lowbit finger ex</span><br><span class="hljs-comment">//     s = 101100</span><br><span class="hljs-comment">//    ~s = 010011</span><br><span class="hljs-comment">//(~s)+1 = 010100 // 根据补码的定义，这就是 -s   最低 1 左侧取反，右侧不变</span><br><span class="hljs-comment">//s &amp; -s = 000100 // lowbit</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -329,9 +333,7 @@ suf2[a][b]的统计结果。</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%AD%90%E5%BA%8F%E5%88%97/">#子序列</a>
-      
-        <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/">#前缀和</a>
+        <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">#树状数组</a>
       
     </div>
   
@@ -345,9 +347,9 @@ suf2[a][b]的统计结果。</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/18/%E8%B4%A8%E5%9B%A0%E6%95%B0/" title="质因数">
+                      <a href="/2023/11/14/%E9%98%88%E5%80%BC%E8%B7%9D%E7%A6%BB%E5%86%85%E9%82%BB%E5%B1%85%E6%9C%80%E5%B0%91%E7%9A%84%E5%9F%8E%E5%B8%82/" title="阈值距离内邻居最少的城市">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">质因数</span>
+                        <span class="hidden-mobile">阈值距离内邻居最少的城市</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -355,8 +357,8 @@ suf2[a][b]的统计结果。</p>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/11/29/%E4%BB%8E%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%A7%BB%E9%99%A4%E8%8A%82%E7%82%B9/" title="从链表中移除节点">
-                        <span class="hidden-mobile">从链表中移除节点</span>
+                      <a href="/2023/10/27/%E5%9D%8F%E4%BA%86%E7%9A%84%E8%AE%A1%E7%AE%97%E5%99%A8/" title="坏了的计算器">
+                        <span class="hidden-mobile">坏了的计算器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
